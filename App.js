@@ -24,41 +24,47 @@ const Stack = createStackNavigator();
 function MainApp() {
   return (
     <>
-    <TopBar />
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-          let iconName;
+      <TopBar />
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => {
+            let iconName;
 
-          if (route.name === 'Home') {
-            iconName = 'home';
-          } else if (route.name === 'Chat') {
-            iconName = 'chat';
-          } else if (route.name === 'Live') {
-            iconName = 'video';
-          } else if (route.name === 'Call') {
-            iconName = 'phone';
-          } else if (route.name === 'History') {
-            iconName = 'history';
-          }
+            if (route.name === 'Home') {
+              iconName = 'home';
+            } else if (route.name === 'Chat') {
+              iconName = 'chat';
+            } else if (route.name === 'Live') {
+              iconName = 'video';
+            } else if (route.name === 'Call') {
+              iconName = 'phone';
+            } else if (route.name === 'History') {
+              iconName = 'history';
+            }
 
-          return <Icon name={iconName} size={size} color={color} />;
-        },
-      })}
-      tabBarOptions={{
-        activeTintColor: '#FF6F61',
-        inactiveTintColor: 'gray',
-      }}
-    >
-      <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
-      <Tab.Screen name="Chat" component={ChatScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="Live" component={LiveScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="Call" component={CallScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="History" component={HistoryScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="Account" component={Account} options={{ headerShown: false }} />
-      <Tab.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-    </Tab.Navigator>
-</>
+            return <Icon name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: '#FF6F61',
+          inactiveTintColor: 'gray',
+        }}
+      >
+        <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+        <Tab.Screen name="Chat" component={ChatScreen} options={{ headerShown: false }} />
+        <Tab.Screen name="Live" component={LiveScreen} options={{ headerShown: false }} />
+        <Tab.Screen name="Call" component={CallScreen} options={{ headerShown: false }} />
+        <Tab.Screen name="History" component={HistoryScreen} options={{ headerShown: false }} />
+        <Tab.Screen name="Account" component={Account} options={{
+          headerShown: false
+          , tabBarButton: () => null, // Hide tab button if you only want to navigate from modal
+        }} />
+        <Tab.Screen name="Login" component={LoginScreen} options={{
+          headerShown: false
+          , tabBarButton: () => null, // Hide tab button if you only want to navigate from modal
+        }} />
+      </Tab.Navigator>
+    </>
   );
 }
 
@@ -66,14 +72,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen 
-          name="Login" 
-          component={LoginScreen} 
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
           options={{ headerShown: false }} // Hides the header for the login screen
         />
-        <Stack.Screen 
-          name="MainApp" 
-          component={MainApp} 
+        <Stack.Screen
+          name="MainApp"
+          component={MainApp}
           options={{ headerShown: false }} // Hides the header for the main app
         />
       </Stack.Navigator>
