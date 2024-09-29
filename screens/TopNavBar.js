@@ -18,7 +18,7 @@ const TopBar = () => {
       navigation.navigate('Account'); // Navigate to the Account screen
     }
     if (option === "Logout") {
-      navigation.navigate('LoginScreen');
+      navigation.navigate('Login');
     }
     // Add more option logic here if needed
   };
@@ -76,7 +76,6 @@ const TopBar = () => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 0,
-    backgroundColor: '#f8f8f8',
   },
   topBar: {
     flexDirection: 'row',
@@ -84,8 +83,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 16,
     paddingTop: 32,
-    backgroundColor: '#f8f8f8',
-    elevation: 4,
+    backgroundColor: '#fff',
+    elevation: 10,
+    shadowColor: "black",
+    shadowOpacity: 1,
   },
   username: {
     fontSize: 18,

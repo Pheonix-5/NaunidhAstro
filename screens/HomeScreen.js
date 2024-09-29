@@ -1,101 +1,249 @@
-// screens/HomeScreen.js
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 
 const HomeScreen = () => {
   return (
-    <>
-    <ScrollView style={styles.screenContainer}>
-      <Text style={styles.screenTitle}>Astrology Insights</Text>
-      <Image
-        source={{ uri: 'https://images.unsplash.com/photo-1621707083539-6013e0bdf113?fit=crop&w=400&q=80' }}
-        style={styles.bannerImage}
-      />
-      <Text style={styles.screenText}>Get daily updates and insights on astrology.</Text>
-
-      <View style={styles.astrologyCard}>
-        <Text style={styles.cardTitle}>Today's Horoscope</Text>
-        <Image
-          source={{ uri: 'https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?fit=crop&w=400&q=80' }}
-          style={styles.cardImage}
-        />
-        <Text style={styles.cardText}>Discover what the stars have in store for you today!</Text>
+    <ScrollView style={styles.container}>
+      {/* Categories Section */}
+      <View style={styles.categoriesContainer}>
+        {['Daily Horoscope', 'Free Kundali', 'Kundali Matching', 'Free Chat'].map((category, index) => (
+          <View key={index} style={styles.categoryCircle}>
+            <Text style={styles.categoryText}>{category}</Text>
+          </View>
+        ))}
       </View>
 
-      <View style={styles.astrologyCard}>
-        <Text style={styles.cardTitle}>Monthly Predictions</Text>
-        <Image
-          source={{ uri: 'https://images.unsplash.com/photo-1526378722249-cd1e21d35410?fit=crop&w=400&q=80' }}
-          style={styles.cardImage}
-        />
-        <Text style={styles.cardText}>A detailed overview of your month ahead.</Text>
+      {/* Banner */}
+      <View style={styles.bannerContainer}>
+        <Text style={styles.bannerText}>Talk to Astrologers for Free!</Text>
+        <Text>Banner will be shown here</Text>
       </View>
+
+      {/* Live Astrologers Section */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Live Astrologers</Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <View style={styles.liveAstrologersContainer}>
+            {['Manas', 'Japleen', 'Parinita', 'Parmanand', 'Sriram'].map((name, index) => (
+              <View key={index} style={styles.liveAstrologerCard}>
+                <Image source={{ uri: 'https://via.placeholder.com/80' }} style={styles.astroImage} />
+                <Text style={styles.astroName}>{name}</Text>
+              </View>
+            ))}
+          </View>
+        </ScrollView>
+      </View>
+
+      {/* Astrologers Section */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Astrologers</Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          
+          {['Palmist Arun', 'Vaidikk', 'Shivpal', 'Astro Max', 'Astro Wise'].map((name, index) => (
+            <View key={index} style={styles.astroCard}>
+              <Image source={{ uri: 'https://via.placeholder.com/80' }} style={styles.astroImage} />
+              <Text style={styles.astroName}>{name}</Text>
+              <Text style={styles.astroCharge}>20 / min</Text>
+              <TouchableOpacity style={styles.chatButton}>
+                <Text style={styles.chatButtonText}>Chat</Text>
+              </TouchableOpacity>
+            </View>
+          ))}
+        </ScrollView>
+      </View>
+
+      {/* Feedback Form */}
+      <View style={styles.feedbackContainer}>
+        <Text style={styles.feedbackTitle}>We value your feedback!</Text>
+        <TextInput style={styles.feedbackInput} placeholder="Write your feedback..." multiline />
+        <TouchableOpacity style={styles.sendFeedbackButton}>
+          <Text style={styles.buttonText}>Send Feedback</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Bottom Information Section */}
+      <View style={styles.infoContainer}>
+        {['Private & Confidential', 'Verified Astrologers', 'Secure Payments'].map((info, index) => (
+          <View key={index} style={styles.infoIconContainer}>
+            <Text style={styles.infoText}>{info}</Text>
+          </View>
+        ))}
+      </View>
+
     </ScrollView>
-
-    </>
   );
 };
 
-export default HomeScreen;
-
 const styles = StyleSheet.create({
-  screenContainer: {
+  container: {
     flex: 1,
-    padding: 20,
-  },
-  screenTitle: {
-    fontSize: 22,
-    fontWeight: '600',
-    marginBottom: 20,
-  },
-  screenText: {
-    fontSize: 16,
-    color: '#555',
-    marginBottom: 20,
-  },
-  bannerImage: {
-    width: '100%',
-    height: 200,
-    borderRadius: 10,
-    marginBottom: 20,
-  },
-  astrologyCard: {
     backgroundColor: '#fff',
+  },
+  categoriesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginVertical: 20,
+    paddingVertical: 10,
+  },
+  categoryCircle: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    padding:3,
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    elevation: 5,
+  },
+  categoryText: {
+    color: "black",
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  bannerContainer: {
+    backgroundColor: '#f13', // Red color for the banner
+    padding: 15,
+    alignItems: 'center',
+    marginVertical: 10,
+    height:200,
+  },
+  bannerText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  section: {
+    marginTop: 20,
+    padding: 15,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  liveAstrologersContainer: {
+    flexDirection: 'row',
+    paddingBottom: 15,
+    paddingTop: 15,
+  },
+  liveAstrologerCard: {
+    alignItems: 'center',
+    marginRight: 15,
+    backgroundColor: '#f13',
     padding: 15,
     borderRadius: 10,
-    marginBottom: 20,
-    elevation: 2,
-  },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 10,
-  },
-  cardImage: {
-    width: '100%',
+    shadowColor: '#000',
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    elevation: 10,
     height: 150,
-    borderRadius: 10,
-    marginBottom: 15,
+    width:"auto",
+    flexWrap: "wrap",
   },
-  cardText: {
-    fontSize: 14,
+  astroCard: {
+    margin: 10,
+    alignItems: 'center',
+    marginRight: 1,
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingTop: 35,
+    paddingBottom: 15,
+    borderColor: "red",
+    borderStyle: "solid",
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },    shadowOpacity: 1,
+    shadowRadius: 1,
+    elevation: 5,
+  },
+  astroImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+  },
+  astroName: {
+    marginTop: 5,
+    color: '#000',
+    fontWeight: 'bold',
+  },
+  astroCharge: {
     color: '#555',
   },
-  topBar: {
-    flexDirection: 'row',
+  chatButton: {
+    backgroundColor: '#e74c3c',
+    borderRadius: 5,
+    padding: 5,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 5,
+  },
+  chatButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  feedbackContainer: {
+    padding: 15,
+    backgroundColor: '#f7f7f7',
+    marginVertical: 20,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 16,
-    backgroundColor: '#f8f8f8',
-    elevation: 4, // for shadow effect
+    borderRadius: 10,
+    elevation: 2,
   },
-  username: {
+  feedbackTitle: {
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: 'bold',
   },
-  balance: {
-    fontSize: 16,
-    color: 'green',
+  feedbackInput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    width: '90%',
+    marginTop: 10,
+    height: 60,
+  },
+  sendFeedbackButton: {
+    backgroundColor: '#e74c3c',
+    borderRadius: 5,
+    padding: 10,
+    marginTop: 10,
+  },
+  infoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginVertical: 20,
+    paddingVertical: 10,
+  },
+  infoIconContainer: {
+    alignItems: 'center',
+    backgroundColor: '#000',
+    borderRadius: 40,
+    padding: 10,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1,
+  },
+  infoText: {
+    fontSize: 12,
+    color: '#fff',
+  },
+  button: {
+    backgroundColor: '#e74c3c',
+    borderRadius: 5,
+    padding: 10,
+    width: '48%',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
+
+export default HomeScreen;

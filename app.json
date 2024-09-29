@@ -18,10 +18,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.naunidhastro.live"
     },
     "web": {
       "favicon": "./assets/icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d953ecda-7c28-41fa-a61f-6a4057ac8745"
+      }
     }
   }
 }

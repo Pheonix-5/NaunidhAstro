@@ -52,7 +52,7 @@ function MainApp() {
       >
         <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
         <Tab.Screen name="Chat" component={ChatScreen} options={{ headerShown: false }} />
-        <Tab.Screen name="Live" component={LiveScreen} options={{ headerShown: false }} />
+        {/* <Tab.Screen name="Live" component={LiveScreen} options={{ headerShown: false }} /> */}
         <Tab.Screen name="Call" component={CallScreen} options={{ headerShown: false }} />
         <Tab.Screen name="History" component={HistoryScreen} options={{ headerShown: false }} />
         <Tab.Screen name="Account" component={Account} options={{
