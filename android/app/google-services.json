@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "757689578229",
+    "project_id": "naunidh-astroliv3",
+    "storage_bucket": "naunidh-astroliv3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757689578229:android:28d1fdb50bdce550444bbc",
+        "android_client_info": {
+          "package_name": "com.naunidhasrto.live"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYJeEfMxCV8P93RcMVqPX909D11o9TVn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

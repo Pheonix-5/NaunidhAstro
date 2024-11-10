@@ -6,9 +6,17 @@ const HomeScreen = () => {
     <ScrollView style={styles.container}>
       {/* Categories Section */}
       <View style={styles.categoriesContainer}>
-        {['Daily Horoscope', 'Free Kundali', 'Kundali Matching', 'Free Chat'].map((category, index) => (
-          <View key={index} style={styles.categoryCircle}>
-            <Text style={styles.categoryText}>{category}</Text>
+        {[
+          { title: 'Daily Horoscope', imageUrl: 'https://via.placeholder.com/80' },
+          { title: 'Free Kundali', imageUrl: 'https://via.placeholder.com/80' },
+          { title: 'Kundali Matching', imageUrl: 'https://via.placeholder.com/80' },
+          { title: 'Free Chat', imageUrl: 'https://via.placeholder.com/80' }
+        ].map((category, index) => (
+          <View key={index} style={styles.categoryContainer}>
+            <View style={styles.categoryCircle}>
+              <Image source={{ uri: category.imageUrl }} style={styles.categoryImage} />
+            </View>
+            <Text style={styles.categoryText}>{category.title}</Text>
           </View>
         ))}
       </View>
@@ -38,7 +46,6 @@ const HomeScreen = () => {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Astrologers</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          
           {['Palmist Arun', 'Vaidikk', 'Shivpal', 'Astro Max', 'Astro Wise'].map((name, index) => (
             <View key={index} style={styles.astroCard}>
               <Image source={{ uri: 'https://via.placeholder.com/80' }} style={styles.astroImage} />
@@ -69,7 +76,6 @@ const HomeScreen = () => {
           </View>
         ))}
       </View>
-
     </ScrollView>
   );
 };
@@ -85,13 +91,16 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     paddingVertical: 10,
   },
+  categoryContainer: {
+    alignItems: 'center',
+    width: 80,
+  },
   categoryCircle: {
     width: 80,
     height: 80,
     borderRadius: 40,
     backgroundColor: '#fff',
     alignItems: 'center',
-    padding:3,
     justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
@@ -99,17 +108,23 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 5,
   },
+  categoryImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
   categoryText: {
+    marginTop: 5,
     color: "black",
     fontWeight: 'bold',
     textAlign: 'center',
   },
   bannerContainer: {
-    backgroundColor: '#f13', // Red color for the banner
+    backgroundColor: '#f13',
     padding: 15,
     alignItems: 'center',
     marginVertical: 10,
-    height:200,
+    height: 200,
   },
   bannerText: {
     color: '#fff',
@@ -141,21 +156,18 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 10,
     height: 150,
-    width:"auto",
-    flexWrap: "wrap",
+    width: 'auto',
+    flexWrap: 'wrap',
   },
   astroCard: {
     margin: 10,
     alignItems: 'center',
-    marginRight: 1,
-    paddingLeft: 30,
-    paddingRight: 30,
-    paddingTop: 35,
-    paddingBottom: 15,
-    borderColor: "red",
-    borderStyle: "solid",
+    padding: 20,
+    borderColor: 'red',
+    borderWidth: 1,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },    shadowOpacity: 1,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
     shadowRadius: 1,
     elevation: 5,
   },
@@ -176,9 +188,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#e74c3c',
     borderRadius: 5,
     padding: 5,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 5,
   },
   chatButtonText: {

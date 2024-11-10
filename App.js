@@ -14,6 +14,7 @@ import HistoryScreen from './screens/HistoryScreen';
 import LoginScreen from './screens/LoginScreen'; // Import the login screen
 import TopBar from './screens/TopNavBar';
 import Account from './screens/Account';
+import { Auth0Provider, useAuth0 } from 'react-native-auth0';
 // Tab Navigator
 const Tab = createBottomTabNavigator();
 
@@ -70,6 +71,7 @@ function MainApp() {
 
 export default function App() {
   return (
+    <Auth0Provider domain={"dev-7jmr8586qx3poep6.us.auth0.com"} clientId={"r7CJCV86q3xGsNVHLVhHMtNOZqZDt9BF"}>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
@@ -84,5 +86,6 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    </Auth0Provider>
   );
 }
